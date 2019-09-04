@@ -1,0 +1,128 @@
+{{/*###
+Handler=/
+TitleBar=Home Page
+KyutGrill=homepage2.jpg
+*/}}
+{{ define "tpl" }}
+{{ $cf := .ClientFlags }}
+{{ $ds := band $cf 1 }}
+{{ $ := . }}
+<div class="ui container">
+
+	<div class="ui center aligned segment">
+		<img src="/static/logos/logo-blue.png">
+	</div>
+
+
+
+	{{ $set := systemSettings "website_home_alert" }}
+	{{ with $set.website_home_alert.String }}
+	<div class="ui warning message">
+		{{ . | html }}
+	</div>
+	{{ end }}
+
+	{{ if not .Context.User.ID }}
+	<div class="ui segment">
+		<h1 class="ui header">{{ .T "Welcome to Enjuu." }}</h1>
+		<p>
+			{{ .T "You look new here. Allow us to introduce you to what Enjuu is. Enjuu is a custom server for the game osu!. We have free osu!Direct, beatmap listing, clans and more! Have fun on Enjuu!" }}
+		</p>
+		<h3 class="ui header center aligned">{{ .T "What are you waiting for? Join Enjuu! It's risk-free: you won't get your account banned on the official server if you play on Enjuu.<br>You can also switch anytime between the official osu! server and Enjuu!" | html }}</h3>
+	</div>
+	{{ else }}
+	<div class="ui segment">
+		<h1 class="ui header">{{ .T "Welcome back, %s!" .Context.User.Username }}</h1>
+		<p>
+			{{ .T "Welcome back to Enjuu! Nice day to farm a few maps, isn't it?<br> <b>Enjuu is watching you</b>" | html }}
+		</p>
+	</div>
+	{{ end }}
+
+	<div class="ui raised segment">
+		<h1 class="ui center aligned header">
+			{{ $.T "Need support or want to talk to other players? Join our <a href='https://discord.gg/WYbwfJS'>Discord</a>!" | html }}
+		</h1>
+	</div>
+	<div class="ui segments">
+
+	</div>
+
+</div>
+
+<div class="ui three column stackable grid container">
+	{{ $d := qb "SELECT id FROM users WHERE id = (SELECT MAX(id) FROM users)" }}
+	<div class="five wide column" style="width: 33.3%!important;">
+		<div class="ui red segment">
+			<div class="ui grid">
+				<div class="four wide column">
+					<i class="user plus icon status-icon"></i>
+				</div>
+				<div class="twelve wide column">
+					<p class="status-head">{{ $d.id.Int }}</p>
+					<p class="status-footer">Registered Users</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{{ $d2 := qb "SELECT username FROM users WHERE id = (SELECT MAX(id) FROM users)" }}
+	{{ $d4 := qb "SELECT id FROM users WHERE id = (SELECT MAX(id) FROM users)" }}
+	<div class="five wide column" style="width: 33.3%!important;">
+		<div class="ui green segment">
+			<div class="ui grid">
+				<div class="four wide column">
+					<i class="user icon status-icon"></i>
+				</div>
+				<div class="twelve wide column">
+					<a href="/u/{{ $d4.id.Int }}" style="color: inherit;">
+						<p class="status-head">{{ $d2.username.String }}</p>
+					</a>
+					<p class="status-footer">Latest User</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{ $d3 := qb "SELECT id FROM scores WHERE id = (SELECT MAX(id) FROM scores)" }}
+	<div class="five wide column" style="width: 33.3%!important;">
+		<div class="ui orange segment">
+			<div class="ui grid">
+				<div class="four wide column">
+					<i class="angle right icon status-icon"></i>
+				</div>
+				<div class="twelve wide column">
+					<p class="status-head">{{ $d3.id.Int }}</p>
+					<p class="status-footer">Submitted Scores</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="ui one column stackable grid container">
+	<div class="five wide column" style="width: 100%!important;">
+		<div class="ui yellow segment">
+			<h2>Our Donators:</h2>
+
+			{{ with .Get "enjuu/topdonors" }}
+			<div class="ui four column stackable grid">
+				{{ range .users }}
+				<div class="ui column">
+					<h4 class="ui image header">
+						<img src="{{ config "AvatarURL" }}/{{ .id }}" class="ui small rounded image">
+						<div class="content">
+							<a href="/u/{{ .id }}">{{ .username }}</a>
+							<div class="sub header">
+								{{ $.T "Expires <b>%s</b>" (time .expiration) | html }}
+							</div>
+						</div>
+					</h4>
+				</div>
+				{{ end }}
+			</div>
+			{{ end }}
+		</div>
+	</div>
+</div>
+</div>
+{{ end }}

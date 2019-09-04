@@ -1,0 +1,54 @@
+{{/*###
+Handler=/store/main
+TitleBar=Store Overview
+KyutGrill=homepage2.jpg
+*/}}
+{{ define "tpl" }}
+{{ $cf := .ClientFlags }}
+{{ $ds := band $cf 1 }}
+{{ $   := . }}
+<div class="ui container">
+
+		<div class="ui center aligned segment">
+			<img src="/static/logos/logo-blue.png">
+		</div>
+		
+		    <div class="ui teal dividing header">
+				<i class="settings icon"></i>
+				<div class="content">
+				  Ingame-Section
+				  <div class="sub header">Buy some Online Additions</div>
+				</div>
+			</div>
+			
+		<div class="ui segment">
+			<div class="item">
+    <div class="image">
+      <img src="https://media.discordapp.net/attachments/398573943100801054/534065966586396674/unknown.png?width=300&height=300">
+    </div>
+    <div class="content">
+      <a class="header">Enjuu!Supporter</a>
+      <div class="meta">
+        <span class="cinema">A lot Additions, for more ingame fun, and support Enjuu c:</span>
+      </div>
+      <div class="description">
+        <p></p>
+      </div>
+      <div class="extra">
+        <div class="ui right floated primary button">
+          Shop now
+          <i class="right chevron icon"></i>
+        </div>
+        <div class="ui label">Ingame</div>
+      </div>
+    </div>
+	</div>
+  </div>
+			
+		</div>
+		
+		
+</div>
+
+</div>
+{{ end }}

@@ -1,0 +1,30 @@
+{{/*###
+NoCompile=true
+*/}}
+{{ define "clanMembers" }}
+{{ with . }}
+	<div class="ui three column center aligned stackable grid">
+		{{ $teamJSON := teamJSON }}
+		{{ range .members }}
+			{{/* ignore fokabot */}}
+			{{ if ne (int .id) 999 }}
+				{{ $tj := index $teamJSON (print .id)}}
+
+				<tr>
+						<td>
+						  <h4 class="ui image header">
+							<img src="{{ config "AvatarURL" }}/{{ .id }}" class="ui mini rounded image">
+							<div class="content">
+								<a href="/u/{{ .id }}">{{ country .country false }}{{ .username }}</a>
+						 	 </div>
+						</h4></td>
+						<td>
+								<i class="sign out icon"></i>
+								{{ time .latest_activity }}
+						</td>
+					  </tr>
+			{{ end }}
+		{{ end }}
+	</div>
+{{ end }}
+{{ end }}

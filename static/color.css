@@ -1,0 +1,40 @@
+.red {
+	color: red;
+	text-shadow:
+	-1px -1px 0 #104e8b,
+	1px -1px 0 #104e8b,
+	-1px 1px 0 #104e8b,
+	1px 1px 0 #104e8b;
+}
+.blue {
+	color: blue;
+	text-shadow:
+	-1px -1px 0 #104e8b,
+	1px -1px 0 #104e8b,
+	-1px 1px 0 #104e8b,
+	1px 1px 0 #104e8b;
+}
+.gold {
+	color: goldenrod;
+	text-shadow:
+	-1px -1px 0 #104e8b,
+	1px -1px 0 #104e8b,
+	-1px 1px 0 #104e8b,
+	1px 1px 0 #104e8b;
+}
+.yellow {
+	color: yellow;
+	text-shadow:
+	-1px -1px 0 #104e8b,
+	1px -1px 0 #104e8b,
+	-1px 1px 0 #104e8b,
+	1px 1px 0 #104e8b;
+}
+.green {
+	color: green;
+	text-shadow:
+	-1px -1px 0 #104e8b,
+	1px -1px 0 #104e8b,
+	-1px 1px 0 #104e8b,
+	1px 1px 0 #104e8b;
+}

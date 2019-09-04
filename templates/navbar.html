@@ -1,0 +1,93 @@
+{{ define "navbar" }}
+{{ $isRAP   := and (hasAdmin .Context.User.Privileges) (isRAP .Path) }}
+{{ $isAdmin := hasAdmin .Context.User.Privileges }}
+{{ $ds      := band .ClientFlags 1 }}
+<div class="ui secondary fixed-height stackable white background main menu no margin bottom{{ if .DisableHH }} dropped{{ end }}" id="navbar">
+	<div class="ui container">
+		<div class="item">
+			<b><a href="/" title="{{ .T "Home page" }}"><img class="ripple logo" src="/static/logos/text-{{ if $ds }}white{{ else }}black{{ end }}.png" alt="Enjuu"></a></b>
+		</div>
+		{{ if $isRAP }}
+			{{/*
+			Note:
+				RAP navbar will be completely different from standard navbar,
+				meaning it will have the buttons and all the stuff that are in
+				the current RAP's sidebar.
+			*/}}
+		{{ else }}
+			<div class="ui dropdown item">
+				<span>{{ .T "Leaderboard" }}</span>
+				<div class="menu">
+					{{ navbarItem .Path (.T "PP") "/leaderboard" }}
+					{{ navbarItem .Path (.T "Score") "/leaderboard/score" }}
+					{{ navbarItem .Path (.T "Clans") "/clans?mode=0" }}
+				</div>
+			</div>
+			<div class="ui dropdown item">
+				<span>{{ .T "Info" }}</span>
+				<div class="menu">
+					{{ navbarItem .Path (.T "YouTube" | printf "<i class=\"blue youtube icon\"></i>%s") "https://www.youtube.com/channel/UCOZ5teZ20-z0RUQ3ksGWbNA" }}
+					{{ navbarItem .Path (.T "Twitter" | printf "<i class=\"blue twitter icon\"></i>%s") "https://twitter.com/OEnjuu" }}
+					{{ navbarItem .Path (.T "Team" | printf "<i class=\"blue users icon\"></i>%s") "https://enjuu.click/team" }}
+					<div class="divider"></div>
+					{{ navbarItem .Path (.T "Documentation" | printf "<i class=\"blue book icon\"></i>%s") "/doc" }}
+					{{ navbarItem .Path (.T "Chat (Discord)" | printf "<i class=\"blue chat icon\"></i>%s") .Conf.DiscordServer }}
+					{{ navbarItem .Path (.T "Contact support" | printf "<i class=\"blue phone icon\"></i>%s") "https://discord.gg/FZBbA8n" }}
+				</div>
+			</div>
+			{{ if .Context.User.Username }}
+			<div class="ui dropdown item">
+				<span>{{ .T "Beatmaps" }}</span>
+				<div class="menu">
+					{{ navbarItem .Path (.T "Request beatmap ranking") "https://discord.gg/x6ZFpEY" }}
+					  {{ navbarItem .Path (.T "Beatmap Listing") "/beatmaps" }}
+					<div class="divider"></div>
+					{{ navbarItem .Path (.T "Bloodcat (BM Mirror)") "http://bloodcat.com/osu/" }}
+					{{ navbarItem .Path (.T "Hexide (BM Mirror)") "https://osu.hexide.com/list/" }}
+					{{ navbarItem .Path (.T "Official BM Packs (BM Mirror)") "https://osu.yas-online.net" }}
+				</div>
+			</div>
+			{{ end }}
+			{{ navbarItem .Path (.T "Download Switcher" | printf "<i class=\"blue download icon\"></i>%s") "https://enjuu.click/switcher" }}
+			{{ navbarItem .Path (.T "Donate" | printf "<i class=\"red heart icon\"></i>%s") "/donate" }}
+			{{ if $isAdmin }}
+			<div class="ui dropdown item">
+				<span>{{ .T "Admin Area" }}</span>
+				<div class="menu">
+					{{ navbarItem .Path (.T "Old Admin Panel" | printf "<i class=\"blue fast backward icon\"></i>%s") "https://admin.enjuu.click" }}
+					<div class="divider"></div>
+					{{ navbarItem .Path (.T "New Admin Panel (Beta)" | printf "<i class=\"blue fast forward icon\"></i>%s") "https://panel.enjuu.click" }}
+				</div>
+			</div>
+			
+			
+			{{ end }}
+		{{ end }}
+		<div class="firetrucking-right-menu">
+			<div class="item">
+				<div class="ui search" id="user-search">
+					<div class="ui icon input">
+						<input class="prompt" type="text" placeholder="{{ .T "Looking for someone?" }}" id="user-search-input">
+						<i class="search link icon"></i>
+					</div>
+				</div>
+			</div>
+			{{ if .Context.User.Username }}
+				<div class="ui dropdown item">
+					<img class="ui avatar image" src="{{ config "AvatarURL" }}/{{ .Context.User.ID }}">
+					<span>{{ .Context.User.Username }}</span>
+					<div class="menu">
+						{{ navbarItem .Path (.T "Profile") (printf "/u/%d" .Context.User.ID) }}
+						{{ navbarItem .Path (.T "Friends") "/friends" }}
+						{{ navbarItem .Path (.T "Settings") "/settings" }}
+						{{ navbarItem .Path (.T "Log out") (printf "/logout?k=%s" (.Session.Get "logout")) }}
+					</div>
+				</div>
+			{{ else }}
+				{{ navbarItem .Path (.T "Log in") "/login" }}
+				{{ navbarItem .Path (.T "Register") "/register" }}
+			{{ end }}
+		</div>
+	</div>
+</div>
+{{ end }}

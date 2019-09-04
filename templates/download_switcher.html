@@ -1,0 +1,41 @@
+{{/*###
+Handler=/switcher
+TitleBar=Download Switcher
+KyutGrill=friends.jpg
+*/}}
+	{{ define "tpl" }}
+	<div class="ui container">
+		<div class="ui segments">
+			<div class="ui segment">
+				<div class="ui three column divided stackable grid">
+					<div class="row">
+						<style>
+						img {
+							width: 100%;
+							height: auto;
+						}
+						</style>
+						<div class="column">
+							<h2>Download Enjuu!Patcher</h2>
+							<img src="/static/switcher/Patcher.png"></img>
+							<p>New Methode of connecting to Enjuu! Just run it, click on patch and your done. Open it from the Desktop and have fun!</p>
+							<a href="https://enjuu.click/static/Enjuu!Patcher.exe"><button tabindex="4" class="ui primary button">{{ .T "Download" }}</button></a>
+						</div>
+						<div class="column">
+							<h2>Download Normal Enjuu!Switcher</h2>
+							<img src="/static/switcher/Switcher.PNG"></img>
+							<p>The Normal Enjuu Switcher is a small compact Switcher it will only connect you to Enjuu! First Install the Certificate and then press on connect to Enjuu</p>
+							<a href="https://cdn.discordapp.com/attachments/397430497157971988/504349179498332171/EnjuuSwitcher_October_23rd_2018.exe"><button tabindex="4" class="ui primary button">{{ .T "Download" }}</button></a>
+						</div>
+						<div class="column">
+							<h2>Download osu!fx</h2>
+							<img src="/static/switcher/Client.PNG"></img>
+							<p>If you have installed the Client. You can easy go to the Server List and connect to Enjuu with osu!fx. If the Downloader gets stuck use the Predownloaded Version. Thanks Sunpy</p>
+							<a href="https://osufx.com/download/"><button tabindex="4" class="ui primary button">{{ .T "Download" }}</button></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{ end }}
