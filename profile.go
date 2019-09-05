@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/JustinOsu/rippleapi/common"
+	"github.com/JustinOsu/api/common"
 )
 
 // TODO: replace with simple ResponseInfo containing userid

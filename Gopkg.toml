@@ -142,7 +142,7 @@
   name = "zxq.co/ripple/playstyle"
 
 [[constraint]]
-  name = "github.com/JustinOsu/rippleapi"
+  name = "github.com/JustinOsu/api"
   branch = "master"
 
 [[constraint]]

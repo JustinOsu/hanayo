@@ -339,7 +339,7 @@
 
 [[projects]]
   branch = "master"
-  name = "github.com/JustinOsu/rippleapi"
+  name = "github.com/JustinOsu/api"
   packages = ["common"]
   revision = "34f24b8de68b46de2cbbfce71bb17c8ad1279f0f"
 

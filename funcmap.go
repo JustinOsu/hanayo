@@ -26,7 +26,7 @@ import (
 	"github.com/JustinOsu/hanayo/modules/doc"
 	"github.com/JustinOsu/hanayo/modules/fa-semantic-mappings"
 	"zxq.co/ripple/playstyle"
-	"github.com/JustinOsu/rippleapi/common"
+	"github.com/JustinOsu/api/common"
 )
 
 // funcMap contains useful functions for the various templates.
