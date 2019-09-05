@@ -4,7 +4,7 @@ import (
 	"database/sql"
 
 	"github.com/gin-gonic/gin"
-	"zxq.co/ripple/hanayo/routers/oauth"
+	"github.com/JustinOsu/hanayo/routers/oauth"
 )
 
 type oauthRequestHandler struct{}
