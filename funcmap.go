@@ -17,7 +17,7 @@ import (
 	"github.com/dustin/go-humanize"
 	"github.com/gin-gonic/gin"
 	"github.com/jmoiron/sqlx"
-	"github.com/russross/blackfriday"
+	"github.com/JustinOsu/blackfriday"
 	"github.com/thehowl/qsql"
 	"golang.org/x/oauth2"
 	"zxq.co/ripple/go-discord-oauth"
