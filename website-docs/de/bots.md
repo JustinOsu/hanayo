@@ -2,8 +2,8 @@
 title: "Bots"
 reference_version: 2691370caa5d6c6b071a18281bd440de
 ---
-Ripple besitzt ein paar Bots, mit denen du über den in-Game Chat tolle Sachen machen kannst. Hier ist eine Liste einiger Bots. Um loszulegen,
-schreibe den jeweiligen Bot in-Game an. Sofern du deinen eigenen Bot einbringen willst, gar kein Problem!
+Ripple besitzt mehrere Bots, mit denen du über den in-game Chat viele tolle Sachen machen kannst. Hier ist eine Liste der Bots. Um loszulegen,
+schreibe den jeweiligen Bot in-Game an.
 Ripple's API deckt sich in den meisten Punkten mit der offiziellen osu! API, wobei die Ripple API über eine Menge anderer Features verfügt, welche hoffentlich bald
 veröffentlicht werden.
 Falls du Hilfe mit Ripple's API brauchen solltest, betrete auf unserem [Discord](https://discord.gg/0rJcZruIsA6rXuIx) Server den  #api Kanal. 
@@ -14,3 +14,5 @@ Falls du einen Bot zu dieser Liste hinzufügen möchtest, kontaktiere [Howl](mai
 * [Tillerino](https://ripple.moe/?u=8887) - [GitHub](https://github.com/Tillerino/Tillerinobot)
 * [AiAeBot](https://ripple.moe/?u=9973) - [Webseite](https://pi.aiaegames.xyz/) - [zxq](https://zxq.co/AiAeGames/AiAeBot)
 * [memebot](https://ripple.moe/?u=12739)
+
+Enjuu versucht alle Befehle zu übernehmen.
